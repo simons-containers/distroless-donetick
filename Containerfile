@@ -1,7 +1,7 @@
 FROM archlinux:base-devel-20260308.0.497099 AS builder
 
 ARG DONETICK_VERSION
-ARG DONETICK_RELEASE=https://github.com/donetick/donetick/releases/download/v${DONETICK_VERSION}/donetick_Linux_x86_64.tar.gz
+ARG DONETICK_RELEASE
 
 WORKDIR /extract/donetick
 RUN curl --silent --show-error --location --output donetick.tar.gz \

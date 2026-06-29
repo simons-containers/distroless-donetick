@@ -2,7 +2,7 @@ name: Update versions
 
 on:
   schedule:
-    - cron: "0 11 * * *"
+    - cron: 0 11 * * *
   workflow_dispatch:
 
 permissions:
@@ -30,8 +30,15 @@ jobs:
               | sort -V \
               | tail -1)
   
-            yq -i ".donetick= \"$DONETICK\"" versions.yaml
-            git diff versions.yaml
+            : ${DONETICK:?}
+            
+            jq \
+              --arg donetick "$DONETICK" \
+              '
+                .donetick.version = $donetick
+              ' sources.json > tmp.json && mv tmp.json sources.json
+
+            git diff sources.json
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
