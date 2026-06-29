@@ -1,0 +1,9 @@
+{
+  "donetick": {
+    "version": "0.1.75",
+    "purl": "pkg:generic/donetick",
+    "release": {
+      "url_pattern": "https://github.com/donetick/donetick/releases/download/v{version}/donetick_Linux_x86_64.tar.gz"
+    }
+  }
+}
